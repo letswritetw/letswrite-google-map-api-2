@@ -1,0 +1,89 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [35.7044724, 139.6916473]
+      },
+      "properties": {
+        "id": 1,
+        "name": "鎧神社",
+        "site": "〒169-0074 東京都新宿区北新宿３丁目１６−18"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [35.7114772, 139.715292]
+      },
+      "properties": {
+        "id": 2,
+        "name": "水稲荷神社",
+        "site": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [35.7040543, 139.7406148]
+      },
+      "properties": {
+        "id": 3,
+        "name": "築土八幡神社",
+        "site": "〒162-0815 東京都新宿区筑土八幡町２−１"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [35.7020019, 139.7676863]
+      },
+      "properties": {
+        "id": 4,
+        "name": "神田明神",
+        "site": "〒101-0021 東京都千代田区外神田２丁目１６−2"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [35.687278, 139.762722]
+      },
+      "properties": {
+        "id": 5,
+        "name": "將門首塚",
+        "site": "〒100-0004 東京都千代田区大手町１丁目１−1"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [35.6835574, 139.7785582]
+      },
+      "properties": {
+        "id": 6,
+        "name": "兜神社",
+        "site": "〒103-0026 東京都中央区日本橋兜町１−12"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [35.702007, 139.7858155]
+      },
+      "properties": {
+        "id": 7,
+        "name": "鳥越神社",
+        "site": "〒111-0054 東京都台東区鳥越２丁目４−1"
+      }
+    }
+  ]
+}

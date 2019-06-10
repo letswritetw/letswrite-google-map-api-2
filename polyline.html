@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Simple Polyline, Polygon - Google Map API demo</title>
+    <link rel="canonical" href="https://medium.com/@augustus0818/google-map-api-2-7ec675a30e7">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <style>
+      .container {
+        padding-top: 30px;
+        padding-bottom: 30px;
+      }
+      #map {
+        background: #CCC;
+      }
+      .fixed-bottom {
+        position: fixed;
+        left: 16px;
+        bottom: 0;
+        max-width: 320px;
+      }
+    </style>
+  </head>
+  <body>
+
+    <div id="app" class="container">
+
+      <div class="row">
+        <div class="col">
+          <div id="map" class="embed-responsive embed-responsive-16by9"></div>
+        </div>
+      </div>
+
+      <div class="row fixed-bottom">
+        <div class="col">
+          <div class="alert alert-info" role="alert">
+            Medium筆記文：<br/>
+            <a href="https://medium.com/@augustus0818/google-map-api-2-7ec675a30e7" target="_blank">Google Map API學習筆記-2：在地圖上畫個日本結界</a>
+          </div>
+        </div>
+      </div>
+    
+    </div>
+    
+    <!-- 將 YOUR_API_KEY 替換成你的 API Key 即可 -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY" async defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.min.js"></script>
+
+    <!-- map -->
+    <script>
+      const googleMap = new Vue({
+        el: '#app',
+        data: {
+          map: null,
+          simplePolyline: [], // 存入折線圖的點
+          simplePolygon: [] // 存入多邊形的點
+        },
+        methods: {
+          // init google map
+          initMap() {
+            
+            // 預設顯示的地點：靖國神社
+            let location = {
+              lat: 35.694136, // 經度
+              lng: 139.743849 // 緯度
+            };
+            
+            // 建立地圖
+            this.map = new google.maps.Map(document.getElementById('map'), {
+              center: location,
+              zoom: 13,
+              mapTypeId: 'terrain'
+            });
+
+
+            // 畫折線圖：平將門北斗七星
+            fetch('./big-dipper.geojson')
+              .then(results => results.json())
+              .then(result => {
+                let res = result.features;
+                let flightPlanCoordinates = [];
+                Array.prototype.forEach.call(res, r => {
+                  let latLng = new google.maps.LatLng(r.geometry.coordinates[0], r.geometry.coordinates[1]);
+                  let marker = new google.maps.Marker({
+                    position: latLng,
+                    map: this.map
+                  });
+                  // info window
+                  let infowindow = new google.maps.InfoWindow({
+                    content: `<span class="font-weight-bold">${r.properties.name}</span>` // 支援html
+                  });
+
+                  infowindow.open(this.map, marker);
+
+                  // 將每個折線的點存入 simplePolyline
+                  this.simplePolyline.push({
+                    lat: r.geometry.coordinates[0],
+                    lng: r.geometry.coordinates[1]
+                  });
+                  
+                });
+
+                // 畫折線圖
+                let polyline = new google.maps.Polyline({
+                  path: this.simplePolyline,
+                  geodesic: true,
+                  strokeColor: '#FF0000',
+                  strokeOpacity: 1.0,
+                  strokeWeight: 5
+                });
+                polyline.setMap(this.map);
+
+            });
+
+
+
+            // 畫多邊形：天皇正方形
+            fetch('./polygon.geojson')
+              .then(results => results.json())
+              .then(result => {
+                let res = result.features;
+                let flightPlanCoordinates = [];
+                Array.prototype.forEach.call(res, r => {
+                  let latLng = new google.maps.LatLng(r.geometry.coordinates[0], r.geometry.coordinates[1]);
+                  let marker = new google.maps.Marker({
+                    position: latLng,
+                    map: this.map
+                  });
+                  // info window
+                  let infowindow = new google.maps.InfoWindow({
+                    content: `<span class="font-weight-bold">${r.properties.name}</span>` // 支援html
+                  });
+
+                  infowindow.open(this.map, marker);
+
+                  // 將每個正方形的點存入 simplePolygon
+                  this.simplePolygon.push({
+                    lat: r.geometry.coordinates[0],
+                    lng: r.geometry.coordinates[1]
+                  });
+                  
+                });
+                
+                // 刪掉最後一個正方形中心點的座標
+                this.simplePolygon.pop();
+
+                // 畫多邊形圖
+                var bermudaTriangle = new google.maps.Polygon({
+                  paths: this.simplePolygon,
+                  strokeColor: '#f1c40f',
+                  strokeOpacity: 0.8,
+                  strokeWeight: 5,
+                  fillColor: '#f1c40f',
+                  fillOpacity: 0.24
+                });
+                bermudaTriangle.setMap(this.map);
+
+            });
+
+            // 補多邊形的折線
+            let polylineLeft = new google.maps.Polyline({
+              path: [
+                { lat: 35.7229985, lng: 139.7198027 },
+                { lat: 35.694136, lng: 139.743849 },
+                { lat: 35.6667348, lng: 139.7718534 }
+              ],
+              geodesic: true,
+              strokeColor: '#f1c40f',
+              strokeOpacity: 1.0,
+              strokeWeight: 5
+            });
+            polylineLeft.setMap(this.map);
+
+            let polylineRight = new google.maps.Polyline({
+              path: [
+                { lat: 35.7242569, lng: 139.7716722 },
+                { lat: 35.694136, lng: 139.743849 },
+                { lat: 35.667028, lng: 139.7219214 }
+              ],
+              geodesic: true,
+              strokeColor: '#f1c40f',
+              strokeOpacity: 1.0,
+              strokeWeight: 5
+            });
+            polylineRight.setMap(this.map);
+
+          }
+        },
+        created() {
+          window.addEventListener('load', () => {
+            this.initMap();
+          });
+        }
+      });
+    </script>
+
+  </body>
+</html>

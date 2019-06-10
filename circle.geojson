@@ -1,0 +1,71 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [35.019416, 135.742086]
+      },
+      "properties": {
+        "id": 1,
+        "name": "平安宮大極殿跡"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [34.970635, 135.833613]
+      },
+      "properties": {
+        "id": 2,
+        "name": "岩谷神社の磐座"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [34.889255, 135.807670]
+      },
+      "properties": {
+        "id": 3,
+        "name": "平等院鳳凰堂"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [34.879675, 135.700043]
+      },
+      "properties": {
+        "id": 4,
+        "name": "石清水八幡宮"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [34.960380, 135.656189]
+      },
+      "properties": {
+        "id": 5,
+        "name": "大原野神社"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [34.9506901, 135.7468915]
+      },
+      "properties": {
+        "id": 6,
+        "name": "城南宮"
+      }
+    }
+  ]
+}

@@ -1,0 +1,65 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [35.7229985, 139.7198027]
+      },
+      "properties": {
+        "id": 1,
+        "name": "雜司之谷靈園",
+        "site": "〒171-0022 東京都豊島区南池袋４丁目２５−1"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [35.7242569, 139.7716722]
+      },
+      "properties": {
+        "id": 2,
+        "name": "谷中靈園",
+        "site": "〒110-0001 東京都台東区谷中７丁目５−24"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [35.6667348, 139.7718534]
+      },
+      "properties": {
+        "id": 3,
+        "name": "築地本願寺",
+        "site": "〒104-0045 東京都中央区築地３丁目１５−1"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [35.667028, 139.7219214]
+      },
+      "properties": {
+        "id": 4,
+        "name": "青山靈園",
+        "site": "〒107-0062 東京都港区南青山２丁目３３ 港区南青山２丁目３２−２"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [35.694136, 139.743849]
+      },
+      "properties": {
+        "id": 5,
+        "name": "靖國神社",
+        "site": "〒102-8246 東京都千代田区九段北３丁目１−1"
+      }
+    }
+  ]
+}
